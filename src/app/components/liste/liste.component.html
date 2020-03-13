@@ -1,0 +1,32 @@
+<app-accueil></app-accueil>
+<div class="container" >
+            <table border="1" class="table-striped">
+               <thead>
+                <tr>
+                    <th  scope="col">ID</th>
+                    <th  scope="col">username</th>
+                    <th  scope="col">prenom</th>
+                    <th  scope="col">nom</th>
+                    <th  scope="col">role</th>
+                    <th scope="col">isActive</th>
+                </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let user of users">
+                     <td>{{user.id}} </td> 
+                      <td>{{user.username}} </td>
+                       <td>{{user.prenom}} </td>
+                       <td>{{user.nom}} </td>
+                       <td>{{user.roles}} </td>
+                       
+                       
+                       <td>
+                           <div *ngIf="user.isActive; else elseBlock">
+                           <button class="btn btn-success" (click)="onStatus(user.id)">Active</button></div>
+                           <ng-template #elseBlock><button class="btn btn-danger" (click)="onStatus(user.id)">Bloquer</button></ng-template>
+                        </td>
+                   </tr>
+               </tbody>
+            </table>
+
+</div>

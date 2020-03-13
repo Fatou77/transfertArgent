@@ -1,0 +1,33 @@
+body {
+    font-family:"trebuchet ms",sans-serif;
+    font-size:95%;
+    
+    }
+   form {
+    background-color:#FAFAFA;
+    padding-left: -50px;
+    width:280px;
+    margin-left: 250px;
+    margin-top: 285px;
+    
+    }
+   fieldset {
+    padding:0 20px 20px 20px;
+    margin-bottom:10px;
+    border:1px solid #DF3F3F;
+    }
+   
+   label {
+    margin-top:10px;
+    display:block;
+    }
+   label.inline {
+    display:inline;
+    margin-right:50px;
+    }
+    input[type=submit], input[type=reset] {
+        width:100px;
+        margin-left:5px;
+        box-shadow:1px 1px 1px #D83F3D;
+        cursor:pointer;
+        }

@@ -1,0 +1,13 @@
+<form [formGroup]="formConnexion">
+
+   <h1>Account</h1>
+      <div class="form-group">
+         <input class="input" type="text" formControlName="username" class="form-control" placeholder="username" />
+      </div>
+         <div class ="form-group">
+
+           <input type="password" formControlName="password" class="form-control"  placeholder="password" />
+         </div>
+         <br>
+         <button class="btn btn-block btn-info" (click) ="onConnxion()">connecter</button>
+</form>

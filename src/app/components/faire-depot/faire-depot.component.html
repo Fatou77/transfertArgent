@@ -1,0 +1,18 @@
+<app-accueil></app-accueil>
+<form [formGroup]="formCompte">
+
+    <div class="input-group mb-3">
+     
+       <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="onSearch()">search</button>
+   </div>
+       <div class="input-group-prepend">
+       <input type="search" formControlName ="numCompte"  placeholder="numCompte">
+     </div>
+
+  <div>
+   <input type="text" formControlName="montant" placeholder="FCFA" >
+ </div>
+ <button type="button" class="btn btn-primary" (click)="onSuccess()">creer</button>
+ 
+</form>
+

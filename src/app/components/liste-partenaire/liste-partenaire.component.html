@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Ninea</th>
+        <th scope="col">Rc</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let partenaire of partenaires">
+       
+        <td>{{partenaire.id}}</td>
+        <td>{{partenaire.ninea}} </td>
+        <td> {{partenaire.rc}} </td>
+      </tr>
+     
+    </tbody>
+  </table>

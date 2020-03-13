@@ -1,0 +1,34 @@
+<app-accueil></app-accueil>
+<div class="container">
+    <form [formGroup]="formUser" class="registre">
+    <div class="form-group">
+      <label for="">username</label>
+      <input type = "text" formControlName="username" placeholder="@gmail.com"/>
+    </div>   
+    <div class="form-group">
+        <label for="password">password</label>
+        <input type = "password" formControlName="password" placeholder="password"/>
+    </div>   
+    <div class="form-group">
+        <label for="prenom">prenom</label>
+        <input type="text" formControlName="prenom" placeholder="prenom"/>  
+    </div>   
+  <div class="form-group">
+        <label for="nom">nom</label>
+        <input type="text" formControlName="nom" placeholder="nom">  
+  </div> 
+  <div class="form-group">
+    <label for="role">role</label>
+    <select formControlName="role" >
+      <option value="">choisir un role</option>
+      <option *ngFor="let role of roles" value="{{role.id}}" >{{role.libelle}} </option>
+      
+    </select>
+  </div>   
+  <button class="btn btn-block btn-info" (click)="onSubmit()">Enregistrer</button>  
+          
+  </form>
+
+
+</div>
+  
