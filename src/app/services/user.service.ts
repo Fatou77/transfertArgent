@@ -12,7 +12,7 @@ export class UserService {
   ) { }
   insertion(data: any)
   {
-     return this.http.post(`${environment.apiUrl}/api/users`,data)
+     return this.http.post(`${environment.apiUrl}/api/users`,data);
   }
   getUser()
   {
@@ -21,6 +21,10 @@ export class UserService {
   getStatus(id:number)
   {
     return this.http.get<any>(`${environment.apiUrl}/api/users/status/${id}`);
+  }
+  creerUserPartenaire(data:any)
+  {
+    return this.http.post<any>(`${environment.apiUrl}/api/user/partenaire`,data);
   }
 
 }

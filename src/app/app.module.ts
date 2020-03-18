@@ -1,3 +1,4 @@
+import { NgxLoadingModule } from 'ngx-loading';
 import { ListePartenaireComponent } from './components/liste-partenaire/liste-partenaire.component';
 import { ListeComponent } from './components/liste/liste.component';
 import { JwtInterceptor } from './helpers/jwt-interceptor.service';
@@ -14,6 +15,8 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { AjoutComponent } from './pages/ajout/ajout.component';
 import { CreationComponent } from './components/creation/creation.component';
 import { FaireDepotComponent } from './components/faire-depot/faire-depot.component';
+import { CreerUserPartenaireComponent } from './components/creer-user-partenaire/creer-user-partenaire.component';
+
 
 @NgModule({
   declarations: [
@@ -27,13 +30,18 @@ import { FaireDepotComponent } from './components/faire-depot/faire-depot.compon
     CreationComponent,
     FaireDepotComponent,
     ListePartenaireComponent,
+    CreerUserPartenaireComponent,
+    
+
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

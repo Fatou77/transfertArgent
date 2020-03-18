@@ -1,18 +1,25 @@
 <app-accueil></app-accueil>
-<form [formGroup]="formCompte">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form [formGroup]="formCompte">
 
-    <div class="input-group mb-3">
-     
-       <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="onSearch()">search</button>
-   </div>
-       <div class="input-group-prepend">
-       <input type="search" formControlName ="numCompte"  placeholder="numCompte">
-     </div>
+    <div class="input-group-prepend">
+    <input type="search" formControlName ="numCompte"  placeholder="numCompte">
+  </div>
 
-  <div>
-   <input type="text" formControlName="montant" placeholder="FCFA" >
- </div>
- <button type="button" class="btn btn-primary" (click)="onSuccess()">creer</button>
- 
+<div>
+<input type="text" formControlName="montant" placeholder="FCFA" >
+</div>
+<button type="button" class="btn btn-primary" (click)="onSuccess()">creer</button>
+
 </form>
 
+
+</body>
+</html>

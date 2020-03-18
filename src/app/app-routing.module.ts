@@ -1,3 +1,4 @@
+import { CreerUserPartenaireComponent } from './components/creer-user-partenaire/creer-user-partenaire.component';
 import { CreationComponent } from './components/creation/creation.component';
 import { FaireDepotComponent } from './components/faire-depot/faire-depot.component';
 import { ListePartenaireComponent } from './components/liste-partenaire/liste-partenaire.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'create_acount' ,component:CreationComponent},
   {path:'listePart',component:ListePartenaireComponent},
   {path:'depot',component:FaireDepotComponent},
+  {path:'userPart',component:CreerUserPartenaireComponent}
 ]; 
 
 @NgModule({

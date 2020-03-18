@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { RoleService } from './../../services/role.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CompteService } from './../../services/compte.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,61 +11,140 @@ import { Component, OnInit } from '@angular/core';
 export class CreationComponent implements OnInit {
  
   formCompte:FormGroup;
-  roles;
+  public loading = false;
+  recerv;
+  ninea;
+  rc;
+  username;
+  password;
+  prenom;
+  nom;
+  montant;
   constructor(
     private serviceCompte:CompteService,
-    private route:Router
-  ) { }
+    private route:Router ) { }
 
   ngOnInit() {
-    
+    this.recerv=0;
     this.formCompte = new FormGroup({
-      partenaire:new FormGroup({
-        ninea:new FormControl(''),
-      rc:new FormControl(''),
-       userPartenaire:new FormGroup({
-        username:new FormControl(''),
-      password:new FormControl(''),
-      prenom:new FormControl(''),
-      nom:new FormControl('')
-     
-       })
-    }),
-    depot:new FormGroup({
-      montant:new FormControl('')
-    })
-    
       
+        ninea:new FormControl(''),
+        rc:new FormControl(''),
+              username:new FormControl(''),
+              password:new FormControl(''),
+              prenom:new FormControl(''),
+              nom:new FormControl(''),
+             montant:new FormControl('') 
     });
-    this.onChange();  
+    this.onChange();
   }
-  onChange():void
+    onChange(): void
   {
-    this.formCompte.get('partenaire.ninea').valueChanges.subscribe(val=>{
-      console.log(val);
-     
+    this.formCompte.get('ninea').valueChanges.subscribe(val=>{
+      if(val){
+        this.getPatnerByNinea(val);
+      }
+     console.log('ninea value changed');
     });
   }                                                                                                                                                                                                                                                                                                                                       
-  get f(){
-    return this.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-
+   get f()
+   {
+    return this.formCompte.controls;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+  }
   onSubmit()
   {
-    console.log(this.formCompte.value);
-    const partenaire={
-      ninea:this.formCompte.value.ninea,
-      rc:this.formCompte.value.rc,
-      username:this.formCompte.value.username,
-      password:this.formCompte.value.password,
-      prenom:this.formCompte.value.prenom,
-      nom:this.formCompte.value.nom,
-      montant:this.formCompte.value.montant,
-         };
-   
-    this.serviceCompte.create(partenaire).subscribe( data=>
-      {
-        alert(JSON.stringify(data));   
-      })
-  }
+     
+      const   ninea=this.formCompte.value.ninea;
+      const  rc=this.formCompte.value.rc;
+      const  username=this.formCompte.value.username;
+      const  password=this.formCompte.value.password;
+      const  prenom=this.formCompte.value.prenom;
+       const nom=this.formCompte.value.nom;
+       const montant=this.formCompte.value.montant;
 
-}
+      const nouveauP={
+         rc:rc,
+        ninea:ninea,
+        username:username,
+         password:password,
+        prenom:prenom,
+        nom:nom,
+        montant:montant,
+      } 
+     
+     const comptePE = {
+      ninea:ninea,
+        montant:montant
+     };
+
+     if (this.recerv !== 1)
+      {
+        this.loading = true;
+      this.serviceCompte.create(nouveauP).subscribe(
+        data => {
+         console.log(data);
+         alert(JSON.stringify(data));
+         
+        },
+        error=>{
+         console.log(error);
+        },
+        
+        );
+      }else{
+        this.loading = false;
+      this.serviceCompte.createExsiste(comptePE).subscribe(
+        data => {
+          alert(JSON.stringify(data));
+          console.log(data);
+        
+         
+        }
+        );    
+      }      
+
+  }
+   getPatnerByNinea(ninea) {
+    this.serviceCompte.searchByNinea(ninea).subscribe
+    (data => {
+      if (data['hydra:member'][0]) {
+        const partenaire = data['hydra:member'][0] ;
+        this.ninea = partenaire['ninea'];
+        console.log(data['hydra:member'][0]);
+        const user=partenaire.users[0];
+        this.username = user.username;
+        this.password = user.password;
+        this.prenom = user.prenom;
+        this.nom = user.nom;
+        this.rc = partenaire.rc;
+        
+       this.formCompte.get('username').disable();
+        this.formCompte.get('password').disable();
+        this.formCompte.get('prenom').disable();
+        this.formCompte.get('nom').disable();
+        this.formCompte.get('rc').disable();
+       
+      this.recerv = 1;
+
+      } else {
+        this.nom = '';
+        this.prenom = '';
+        this.username = '';
+        this.password = '';
+        this.ninea = '';
+        this.rc = '';
+       this.formCompte.get('username').enable();
+       this.formCompte.get('password').enable();
+       this.formCompte.get('prenom').enable();
+       this.formCompte.get('nom').enable();
+       this.formCompte.get('rc').enable();
+      }
+    },
+    error => {
+      console.log(error);
+      console.log();
+    });
+      }
+    }
+  
+

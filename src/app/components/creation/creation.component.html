@@ -1,42 +1,48 @@
 <app-accueil></app-accueil>
-<div class="container">
-<form [formGroup]="formCompte" class="px-4 py-3" class="registre">	
-				
-				<div class="group">
-					<label for="prenom" >username</label>
-					<input  type="text" formControlName ="username">
-				</div>
-
-				<div class="group">
-					<label for="prenom" >password</label>
-					<input  type="password" formControlName ="password">
-				</div>
-
-
-                <div class="group">
-					<label for="prenom" >Prenom</label>
-					<input  type="text" formControlName ="prenom">
-				</div>
-
-				<div class="group">
-					<label for="nom">Nom</label>
-					<input type="text" formControlName ="nom">
-				</div>
-				<div class="position">
+<html>
+	<div class="container">
+	<form [formGroup]="formCompte" class="px-4 py-3" class="registre">	
+			
 				<div class="form-group">
 					<label for="user" class="label">ninea</label>
-					<input type="text" formControlName ="ninea" placeholder="ninea">
+					<input type="text"  formControlName ="ninea" placeholder="ninea">
                 </div>
                 <div class="form-group">
 					<label for="rc" >Rc</label>
-					<input  type="text" formControlName="rc">
+					<input  type="text" [value]="rc" formControlName="rc">
+				</div>																																													
+	
+			  <div class="form-group">																							
+					<label for="username" >username</label>
+					<input  type="text" [value]="username" formControlName ="username">
+			 </div>
+
+				<div class="form-group">
+					<label for="password" >password</label>
+					<input  type="password" [value]="password" formControlName ="password">
 				</div>
-				<div class="group">
+
+
+                <div class="form-group">
+					<label for="prenom" >Prenom</label>
+					<input  type="text" [value]= "prenom" formControlName ="prenom">
+				</div>
+
+				<div class="form-group">
+					<label for="nom">Nom</label>
+					<input type="text" [value]="nom" formControlName ="nom">
+				</div>
+		
+	
+
+            
+				<div class="form-group">
 					<label for="montant" class="label">Montant</label>
 					<input type="text"formControlName ="montant" placeholder="FCFA">
 				</div>
-			</div>
-                 <button type="submit" class="btn btn-primary" (click)="onSubmit()">create</button>
+		
+             <button type="submit" class="button" (click)="onSubmit()">create</button>
 
- </form>
-</div>
+	</form>
+	</div>
+</html>	

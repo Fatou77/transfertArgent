@@ -16,7 +16,7 @@ export class ListeComponent implements OnInit {
   ngOnInit() {
     this.user.getUser().subscribe(data=>
       {
-        console.log(data)
+        console.log(data);
 
         this.users=data;
       })
